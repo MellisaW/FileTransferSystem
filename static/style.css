@@ -1,0 +1,116 @@
+/* Container centered with padding and gentle background */
+body {
+  background-color: #0e1e3a;
+  color: #eee;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: #1a2a47;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Headings */
+h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+  color: #b1d4e0;
+}
+
+/* Buttons: primary (upload), delete, logout */
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #4a90e2;
+  color: #fff;
+  margin-left: 10px;
+  transition: background 0.3s;
+}
+.btn-primary:hover {
+  background-color: #357ab8;
+}
+
+.btn-delete {
+  background-color: #e24a4a;
+  color: #fff;
+  margin-left: 10px;
+}
+.btn-delete:hover {
+  background-color: #b83a3a;
+}
+
+.btn-logout {
+  background-color: #e2954a;
+  color: #fff;
+  width: 100%;
+  margin-top: 20px;
+}
+.btn-logout:hover {
+  background-color: #b86e3a;
+}
+
+/* Search input */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+}
+
+/* File list */
+.file-list {
+  list-style: none;
+  padding: 0;
+}
+.file-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1f3152;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 4px;
+}
+.filename {
+  flex: 1;
+  color: #ddd;
+}
+.link-btn {
+  color: #8ac4ff;
+  text-decoration: none;
+}
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+/* Alerts */
+.alert {
+  padding: 8px 12px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+.alert.danger {
+  background-color: #e24a4a;
+  color: #fff;
+}
+.alert.warning {
+  background-color: #e2a44a;
+  color: #fff;
+}
+.alert.success {
+  background-color: #4ae27c;
+  color: #fff;
+}

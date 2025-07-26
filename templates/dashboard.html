@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-color: #e3f2fd; /* light blue */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+
+        .dashboard-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 900px;
+            color: #000000;
+            max-height: calc(100vh - 40px); 
+            overflow-y: auto; 
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0d47a1;
+            margin-bottom: 20px;
+        }
+
+        .table-scroll-container {
+            max-height: 400px; 
+            overflow-y: auto; 
+            border: 1px solid #eee; 
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+            color: #000000;
+        }
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #bbdefb;
+            color: #0d47a1;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        tr:hover {
+            background-color: #e1f5fe;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>📊 File Activity Logs</h2>
+        <input type="text" id="logSearch" onkeyup="filterLogs()" placeholder="Search logs..." style="width: 100%; padding: 10px; margin-bottom: 15px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Filename</th>
+                    <th>Action</th>
+                    <th>User</th>
+                    <th>IP</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr class="log-row">
+                    <td>{{ log.filename or '-' }}</td>
+                    <td>{{ log.action }}</td>
+                    <td>{{ log.username }}</td>
+                    <td>{{ log.ip_address }}</td>
+                    <td>{{ log.timestamp }}</td>
+                    <td>{{ log.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('logSearch').addEventListener('input', () => {
+            const filter = logSearch.value.toLowerCase();
+            document.querySelectorAll('.log-row').forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(filter) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
+     
